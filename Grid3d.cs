@@ -37,7 +37,32 @@ public class Grid3d {
   
   /** CREATING AND SETTING */
   
+  private Grid() {
+    this.initialise();
+  }
   
+  private void setUp(string name, Vector3 size) {
+    this.name = name;
+    this.size.x = size.x;
+    this.size.y = size.y;
+    this.size.z = zise.z;
+  }
+  
+  void createNodes() {
+    Vector3 nodePos = new Vector3();
+    
+    for (int x = 0; x < this.size.x; x++) {
+      this.nodes.Add(new List<List<GridNode3d>>());
+      nodePos.x = x;
+      for (int y = 0; y < this.size.y; y++) {
+        this.nodes[x].Add(new List<GridNode3d>());
+        nodePos.y = y;
+        for (int z = 0; z < this.size.z; z++) {
+          this.nodes[x][y].Add(new GridNode3d(this.name, nodePos));
+        }
+      }
+    }
+  }
   
   /** PATHFINDING */
   
