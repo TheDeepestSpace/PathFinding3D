@@ -18,6 +18,10 @@ public class Grid3d {
   
   /** INITIALISING */
   
+  public static void initialiseInstances() {
+    
+  }
+  
   /** CREATING AND SETTING */
   
   /** PATHFINDING */
