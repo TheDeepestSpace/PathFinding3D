@@ -6,7 +6,7 @@ public class Game : MonoBehaviour {
         Grid.initialiseInstances();
     }
  
-	void Start () {
+	void Start () { 
         initialise();
 
         Grid.addInstance("grid", new Vector3(10, 10, 10));
