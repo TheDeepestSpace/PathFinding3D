@@ -99,9 +99,9 @@ public class Grid3d {
             this.closedList.Add(this.openedList[bestFIndex]);
             this.openedList.Remove(this.openedList[bestFIndex]);
             
-            openListPostion.x = this.closedList[this.closedList.Count - 1].gridCoordinates.x;
-            openListPostion.y = this.closedList[this.closedList.Count - 1].gridCoordinates.y;
-            openListPostion.z = this.closedList[this.closedList.Count - 1].gridCoordinates.z;
+            openListPosition.x = this.closedList[this.closedList.Count - 1].gridCoordinates.x;
+            openListPosition.y = this.closedList[this.closedList.Count - 1].gridCoordinates.y;
+            openListPosition.z = this.closedList[this.closedList.Count - 1].gridCoordinates.z;
             
             this.setOpenList(openListPosition);
           }else {
@@ -113,7 +113,7 @@ public class Grid3d {
       }
     }
     
-    GridNode3d g = this.closeList[this.closeList.Count - 1];
+    GridNode3d g = this.closedList[this.closedList.Count - 1];
     this.finalPath.Add(g);
 
 
@@ -136,133 +136,133 @@ public class Grid3d {
     bool ignoreFront = (gridCoordinates.z + 1) >= this.nodes[0][0].Count;
     
     if (!ignoreLeft && !ignoreDown && !ignoreBack) {
-      lookNode(this.nodes[(int)position.x][(int)position.y][(int)position.z],
-        this.nodes[(int)position.x - 1][(int)position.y - 1][(int)position.z - 1]);
+      lookNode(this.nodes[(int)gridCoordinates.x][(int)gridCoordinates.y][(int)gridCoordinates.z],
+        this.nodes[(int)gridCoordinates.x - 1][(int)gridCoordinates.y - 1][(int)gridCoordinates.z - 1]);
     }
 
     if (!ignoreLeft && !ignoreDown) {
-      lookNode(this.nodes[(int)position.x][(int)position.y][(int)position.z],
-        this.nodes[(int)position.x - 1][(int)position.y - 1][(int)position.z]);
+      lookNode(this.nodes[(int)gridCoordinates.x][(int)gridCoordinates.y][(int)gridCoordinates.z],
+        this.nodes[(int)gridCoordinates.x - 1][(int)gridCoordinates.y - 1][(int)gridCoordinates.z]);
     }
 
     if (!ignoreLeft && !ignoreDown && !ignoreFront) {
-      lookNode(this.nodes[(int)position.x][(int)position.y][(int)position.z],
-        this.nodes[(int)position.x - 1][(int)position.y - 1][(int)position.z + 1]);
+      lookNode(this.nodes[(int)gridCoordinates.x][(int)gridCoordinates.y][(int)gridCoordinates.z],
+        this.nodes[(int)gridCoordinates.x - 1][(int)gridCoordinates.y - 1][(int)gridCoordinates.z + 1]);
     }
 
     if (!ignoreDown && !ignoreBack) {
-      lookNode(this.nodes[(int)position.x][(int)position.y][(int)position.z],
-        this.nodes[(int)position.x][(int)position.y - 1][(int)position.z - 1]);
+      lookNode(this.nodes[(int)gridCoordinates.x][(int)gridCoordinates.y][(int)gridCoordinates.z],
+        this.nodes[(int)gridCoordinates.x][(int)gridCoordinates.y - 1][(int)gridCoordinates.z - 1]);
     }
 
     if (!ignoreDown) {
-      lookNode(this.nodes[(int)position.x][(int)position.y][(int)position.z],
-        this.nodes[(int)position.x][(int)position.y - 1][(int)position.z]);
+      lookNode(this.nodes[(int)gridCoordinates.x][(int)gridCoordinates.y][(int)gridCoordinates.z],
+        this.nodes[(int)gridCoordinates.x][(int)gridCoordinates.y - 1][(int)gridCoordinates.z]);
     }
 
     if (!ignoreDown && !ignoreFront) {
-      lookNode(this.nodes[(int)position.x][(int)position.y][(int)position.z],
-        this.nodes[(int)position.x][(int)position.y - 1][(int)position.z + 1]);
+      lookNode(this.nodes[(int)gridCoordinates.x][(int)gridCoordinates.y][(int)gridCoordinates.z],
+        this.nodes[(int)gridCoordinates.x][(int)gridCoordinates.y - 1][(int)gridCoordinates.z + 1]);
     }
 
     if (!ignoreRight && !ignoreDown && !ignoreBack) {
-      lookNode(this.nodes[(int)position.x][(int)position.y][(int)position.z],
-        this.nodes[(int)position.x + 1][(int)position.y - 1][(int)position.z - 1]);
+      lookNode(this.nodes[(int)gridCoordinates.x][(int)gridCoordinates.y][(int)gridCoordinates.z],
+        this.nodes[(int)gridCoordinates.x + 1][(int)gridCoordinates.y - 1][(int)gridCoordinates.z - 1]);
     }
 
     if (!ignoreRight && !ignoreDown) {
-      lookNode(this.nodes[(int)position.x][(int)position.y][(int)position.z],
-        this.nodes[(int)position.x + 1][(int)position.y - 1][(int)position.z]);
+      lookNode(this.nodes[(int)gridCoordinates.x][(int)gridCoordinates.y][(int)gridCoordinates.z],
+        this.nodes[(int)gridCoordinates.x + 1][(int)gridCoordinates.y - 1][(int)gridCoordinates.z]);
     }
 
     if (!ignoreRight && !ignoreDown && !ignoreFront) {
-      lookNode(this.nodes[(int)position.x][(int)position.y][(int)position.z],
-        this.nodes[(int)position.x + 1][(int)position.y - 1][(int)position.z + 1]);
+      lookNode(this.nodes[(int)gridCoordinates.x][(int)gridCoordinates.y][(int)gridCoordinates.z],
+        this.nodes[(int)gridCoordinates.x + 1][(int)gridCoordinates.y - 1][(int)gridCoordinates.z + 1]);
     }
 
     if (!ignoreLeft && !ignoreBack) {
-      lookNode(this.nodes[(int)position.x][(int)position.y][(int)position.z],
-        this.nodes[(int)position.x - 1][(int)position.y][(int)position.z - 1]);
+      lookNode(this.nodes[(int)gridCoordinates.x][(int)gridCoordinates.y][(int)gridCoordinates.z],
+        this.nodes[(int)gridCoordinates.x - 1][(int)gridCoordinates.y][(int)gridCoordinates.z - 1]);
     }
 
     if (!ignoreLeft) {
-      lookNode(this.nodes[(int)position.x][(int)position.y][(int)position.z],
-        this.nodes[(int)position.x - 1][(int)position.y][(int)position.z]);
+      lookNode(this.nodes[(int)gridCoordinates.x][(int)gridCoordinates.y][(int)gridCoordinates.z],
+        this.nodes[(int)gridCoordinates.x - 1][(int)gridCoordinates.y][(int)gridCoordinates.z]);
     }
 
     if (!ignoreLeft && !ignoreFront) {
-      lookNode(this.nodes[(int)position.x][(int)position.y][(int)position.z],
-        this.nodes[(int)position.x - 1][(int)position.y][(int)position.z + 1]);
+      lookNode(this.nodes[(int)gridCoordinates.x][(int)gridCoordinates.y][(int)gridCoordinates.z],
+        this.nodes[(int)gridCoordinates.x - 1][(int)gridCoordinates.y][(int)gridCoordinates.z + 1]);
     }
 
     if (!ignoreBack) {
-      lookNode(this.nodes[(int)position.x][(int)position.y][(int)position.z],
-        this.nodes[(int)position.x][(int)position.y][(int)position.z - 1]);
+      lookNode(this.nodes[(int)gridCoordinates.x][(int)gridCoordinates.y][(int)gridCoordinates.z],
+        this.nodes[(int)gridCoordinates.x][(int)gridCoordinates.y][(int)gridCoordinates.z - 1]);
     }
 
     if (!ignoreFront) {
-      lookNode(this.nodes[(int)position.x][(int)position.y][(int)position.z],
-        this.nodes[(int)position.x][(int)position.y][(int)position.z + 1]);
+      lookNode(this.nodes[(int)gridCoordinates.x][(int)gridCoordinates.y][(int)gridCoordinates.z],
+        this.nodes[(int)gridCoordinates.x][(int)gridCoordinates.y][(int)gridCoordinates.z + 1]);
     }
 
     if (!ignoreRight && !ignoreBack) {
-      lookNode(this.nodes[(int)position.x][(int)position.y][(int)position.z],
-        this.nodes[(int)position.x + 1][(int)position.y][(int)position.z - 1]);
+      lookNode(this.nodes[(int)gridCoordinates.x][(int)gridCoordinates.y][(int)gridCoordinates.z],
+        this.nodes[(int)gridCoordinates.x + 1][(int)gridCoordinates.y][(int)gridCoordinates.z - 1]);
     }
 
     if (!ignoreRight) {
-      lookNode(this.nodes[(int)position.x][(int)position.y][(int)position.z],
-        this.nodes[(int)position.x + 1][(int)position.y][(int)position.z]);
+      lookNode(this.nodes[(int)gridCoordinates.x][(int)gridCoordinates.y][(int)gridCoordinates.z],
+        this.nodes[(int)gridCoordinates.x + 1][(int)gridCoordinates.y][(int)gridCoordinates.z]);
     }
 
     if (!ignoreRight && !ignoreFront) {
-      lookNode(this.nodes[(int)position.x][(int)position.y][(int)position.z],
-        this.nodes[(int)position.x + 1][(int)position.y][(int)position.z + 1]);
+      lookNode(this.nodes[(int)gridCoordinates.x][(int)gridCoordinates.y][(int)gridCoordinates.z],
+        this.nodes[(int)gridCoordinates.x + 1][(int)gridCoordinates.y][(int)gridCoordinates.z + 1]);
     }
 
     if (!ignoreLeft && !ignoreUp && !ignoreBack) {
-      lookNode(this.nodes[(int)position.x][(int)position.y][(int)position.z],
-        this.nodes[(int)position.x - 1][(int)position.y + 1][(int)position.z - 1]);
+      lookNode(this.nodes[(int)gridCoordinates.x][(int)gridCoordinates.y][(int)gridCoordinates.z],
+        this.nodes[(int)gridCoordinates.x - 1][(int)gridCoordinates.y + 1][(int)gridCoordinates.z - 1]);
     }
 
     if (!ignoreLeft && !ignoreUp) {
-      lookNode(this.nodes[(int)position.x][(int)position.y][(int)position.z],
-        this.nodes[(int)position.x - 1][(int)position.y + 1][(int)position.z]);
+      lookNode(this.nodes[(int)gridCoordinates.x][(int)gridCoordinates.y][(int)gridCoordinates.z],
+        this.nodes[(int)gridCoordinates.x - 1][(int)gridCoordinates.y + 1][(int)gridCoordinates.z]);
     }
 
     if (!ignoreLeft && !ignoreUp && !ignoreFront) {
-      lookNode(this.nodes[(int)position.x][(int)position.y][(int)position.z],
-        this.nodes[(int)position.x - 1][(int)position.y + 1][(int)position.z + 1]);
+      lookNode(this.nodes[(int)gridCoordinates.x][(int)gridCoordinates.y][(int)gridCoordinates.z],
+        this.nodes[(int)gridCoordinates.x - 1][(int)gridCoordinates.y + 1][(int)gridCoordinates.z + 1]);
     }
 
     if (!ignoreUp && !ignoreBack) {
-      lookNode(this.nodes[(int)position.x][(int)position.y][(int)position.z],
-        this.nodes[(int)position.x][(int)position.y + 1][(int)position.z - 1]);
+      lookNode(this.nodes[(int)gridCoordinates.x][(int)gridCoordinates.y][(int)gridCoordinates.z],
+        this.nodes[(int)gridCoordinates.x][(int)gridCoordinates.y + 1][(int)gridCoordinates.z - 1]);
     }
 
     if (!ignoreUp) {
-      lookNode(this.nodes[(int)position.x][(int)position.y][(int)position.z],
-        this.nodes[(int)position.x][(int)position.y + 1][(int)position.z]);
+      lookNode(this.nodes[(int)gridCoordinates.x][(int)gridCoordinates.y][(int)gridCoordinates.z],
+        this.nodes[(int)gridCoordinates.x][(int)gridCoordinates.y + 1][(int)gridCoordinates.z]);
     }
 
     if (!ignoreUp && !ignoreFront) {
-      lookNode(this.nodes[(int)position.x][(int)position.y][(int)position.z],
-        this.nodes[(int)position.x][(int)position.y + 1][(int)position.z + 1]);
+      lookNode(this.nodes[(int)gridCoordinates.x][(int)gridCoordinates.y][(int)gridCoordinates.z],
+        this.nodes[(int)gridCoordinates.x][(int)gridCoordinates.y + 1][(int)gridCoordinates.z + 1]);
     }
 
     if (!ignoreRight && !ignoreUp && !ignoreBack) {
-      lookNode(this.nodes[(int)position.x][(int)position.y][(int)position.z],
-        this.nodes[(int)position.x + 1][(int)position.y + 1][(int)position.z - 1]);
+      lookNode(this.nodes[(int)gridCoordinates.x][(int)gridCoordinates.y][(int)gridCoordinates.z],
+        this.nodes[(int)gridCoordinates.x + 1][(int)gridCoordinates.y + 1][(int)gridCoordinates.z - 1]);
     }
 
     if (!ignoreRight && !ignoreUp) {
-      lookNode(this.nodes[(int)position.x][(int)position.y][(int)position.z],
-        this.nodes[(int)position.x + 1][(int)position.y + 1][(int)position.z]);
+      lookNode(this.nodes[(int)gridCoordinates.x][(int)gridCoordinates.y][(int)gridCoordinates.z],
+        this.nodes[(int)gridCoordinates.x + 1][(int)gridCoordinates.y + 1][(int)gridCoordinates.z]);
     }
 
     if (!ignoreRight && !ignoreUp && !ignoreFront) {
-      lookNode(this.nodes[(int)position.x][(int)position.y][(int)position.z],
-        this.nodes[(int)position.x + 1][(int)position.y + 1][(int)position.z + 1]);
+      lookNode(this.nodes[(int)gridCoordinates.x][(int)gridCoordinates.y][(int)gridCoordinates.z],
+        this.nodes[(int)gridCoordinates.x + 1][(int)gridCoordinates.y + 1][(int)gridCoordinates.z + 1]);
     }
   }
   
