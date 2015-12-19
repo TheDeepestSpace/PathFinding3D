@@ -301,6 +301,52 @@ public class Grid3d {
     
   }
   
+  public void setGridNode(Vector3 position, GridNode.Type type) {
+    if (position.x >= 0 && position.x < this.nodes.Count) {
+      if (position.y >= 0 && position.y < this.nodes[(int)position.x].Count) {
+        if (position.z >= 0 && position.z < this.nodes[(int)position.x][(int)position.y].Count) {
+          if (type == GridNode.Type.START || type == GridNode.Type.END) {
+            for (int x = 0; x < this.nodes.Count; x++) {
+              for (int y = 0; y < this.nodes[x].Count; y++) {
+                for (int z = 0; z < this.nodes[x][y].Count; z++) {
+                  if (this.nodes[x][y][z].type == type) {
+                    if (type == GridNode.Type.START) {
+                      this.start.x = -1;
+                      this.start.y = -1;
+                      this.start.z = -1;
+                    } else {
+                      this.end.x = -1;
+                      this.end.y = -1;
+                      this.end.z = -1;
+                    }
+                    
+                    this.nodes[x][y][z].type = GridNode.Type.NONE;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    
+    if (this.nodes[(int)position.x][(int)position.y][(int)position.z].type == type) {
+      this.nodes[(int)position.x][(int)position.y][(int)position.z].type = GridNode.Type.NONE;
+    } else {
+      if (type == GridNode.Type.START) {
+        this.start.x = position.x;
+        this.start.y = position.y;
+        this.start.z = position.z;
+      } else if (type == GridNode.Type.END) {
+        this.end.x = position.x;
+        this.end.y = position.y;
+        this.end.z = position.z;
+      }
+      this.nodes[(int)position.x][(int)position.y][(int)position.z].type = type;
+    }
+    this.nodes[(int)position.x][(int)position.y][(int)position.z].setUpModel();
+  }
+  
   /** GETTERS / SETTERS */
   
   public GridNode3d getStartNode() {
