@@ -46,6 +46,8 @@ public class Grid3d {
     this.size.x = size.x;
     this.size.y = size.y;
     this.size.z = size.z;
+    
+    this.createNodes();
   }
   
   void createNodes() {
