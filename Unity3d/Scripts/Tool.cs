@@ -6,7 +6,7 @@ public class Tool {
         return new Vector3(
             gridCoordinates.x * Grid.tileSize + Grid.tileSize / 2,
             gridCoordinates.y * Grid.tileSize + Grid.tileSize / 2,
-            gridCoordinates.z * Grid.tileSize + Grid.tileSize / 2
+            gridCoordinates.z * Grid.tileSize + Grid.tileSize / 2 
         );
     }
 }
