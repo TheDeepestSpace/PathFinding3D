@@ -98,6 +98,136 @@ public class Grid3d {
     bool ignoreUp = (gridCoordinates.y + 1) >= this.nodes[0].Count;
     bool ignoreBack = (gridCoordinates.z - 1) < 0;
     bool ignoreFront = (gridCoordinates.z + 1) >= this.nodes[0][0].Count;
+    
+    if (!ignoreLeft && !ignoreDown && !ignoreBack) {
+      lookNode(this.nodes[(int)position.x][(int)position.y][(int)position.z],
+        this.nodes[(int)position.x - 1][(int)position.y - 1][(int)position.z - 1]);
+    }
+
+    if (!ignoreLeft && !ignoreDown) {
+      lookNode(this.nodes[(int)position.x][(int)position.y][(int)position.z],
+        this.nodes[(int)position.x - 1][(int)position.y - 1][(int)position.z]);
+    }
+
+    if (!ignoreLeft && !ignoreDown && !ignoreFront) {
+      lookNode(this.nodes[(int)position.x][(int)position.y][(int)position.z],
+        this.nodes[(int)position.x - 1][(int)position.y - 1][(int)position.z + 1]);
+    }
+
+    if (!ignoreDown && !ignoreBack) {
+      lookNode(this.nodes[(int)position.x][(int)position.y][(int)position.z],
+        this.nodes[(int)position.x][(int)position.y - 1][(int)position.z - 1]);
+    }
+
+    if (!ignoreDown) {
+      lookNode(this.nodes[(int)position.x][(int)position.y][(int)position.z],
+        this.nodes[(int)position.x][(int)position.y - 1][(int)position.z]);
+    }
+
+    if (!ignoreDown && !ignoreFront) {
+      lookNode(this.nodes[(int)position.x][(int)position.y][(int)position.z],
+        this.nodes[(int)position.x][(int)position.y - 1][(int)position.z + 1]);
+    }
+
+    if (!ignoreRight && !ignoreDown && !ignoreBack) {
+      lookNode(this.nodes[(int)position.x][(int)position.y][(int)position.z],
+        this.nodes[(int)position.x + 1][(int)position.y - 1][(int)position.z - 1]);
+    }
+
+    if (!ignoreRight && !ignoreDown) {
+      lookNode(this.nodes[(int)position.x][(int)position.y][(int)position.z],
+        this.nodes[(int)position.x + 1][(int)position.y - 1][(int)position.z]);
+    }
+
+    if (!ignoreRight && !ignoreDown && !ignoreFront) {
+      lookNode(this.nodes[(int)position.x][(int)position.y][(int)position.z],
+        this.nodes[(int)position.x + 1][(int)position.y - 1][(int)position.z + 1]);
+    }
+
+    if (!ignoreLeft && !ignoreBack) {
+      lookNode(this.nodes[(int)position.x][(int)position.y][(int)position.z],
+        this.nodes[(int)position.x - 1][(int)position.y][(int)position.z - 1]);
+    }
+
+    if (!ignoreLeft) {
+      lookNode(this.nodes[(int)position.x][(int)position.y][(int)position.z],
+        this.nodes[(int)position.x - 1][(int)position.y][(int)position.z]);
+    }
+
+    if (!ignoreLeft && !ignoreFront) {
+      lookNode(this.nodes[(int)position.x][(int)position.y][(int)position.z],
+        this.nodes[(int)position.x - 1][(int)position.y][(int)position.z + 1]);
+    }
+
+    if (!ignoreBack) {
+      lookNode(this.nodes[(int)position.x][(int)position.y][(int)position.z],
+        this.nodes[(int)position.x][(int)position.y][(int)position.z - 1]);
+    }
+
+    if (!ignoreFront) {
+      lookNode(this.nodes[(int)position.x][(int)position.y][(int)position.z],
+        this.nodes[(int)position.x][(int)position.y][(int)position.z + 1]);
+    }
+
+    if (!ignoreRight && !ignoreBack) {
+      lookNode(this.nodes[(int)position.x][(int)position.y][(int)position.z],
+        this.nodes[(int)position.x + 1][(int)position.y][(int)position.z - 1]);
+    }
+
+    if (!ignoreRight) {
+      lookNode(this.nodes[(int)position.x][(int)position.y][(int)position.z],
+        this.nodes[(int)position.x + 1][(int)position.y][(int)position.z]);
+    }
+
+    if (!ignoreRight && !ignoreFront) {
+      lookNode(this.nodes[(int)position.x][(int)position.y][(int)position.z],
+        this.nodes[(int)position.x + 1][(int)position.y][(int)position.z + 1]);
+    }
+
+    if (!ignoreLeft && !ignoreUp && !ignoreBack) {
+      lookNode(this.nodes[(int)position.x][(int)position.y][(int)position.z],
+        this.nodes[(int)position.x - 1][(int)position.y + 1][(int)position.z - 1]);
+    }
+
+    if (!ignoreLeft && !ignoreUp) {
+      lookNode(this.nodes[(int)position.x][(int)position.y][(int)position.z],
+        this.nodes[(int)position.x - 1][(int)position.y + 1][(int)position.z]);
+    }
+
+    if (!ignoreLeft && !ignoreUp && !ignoreFront) {
+      lookNode(this.nodes[(int)position.x][(int)position.y][(int)position.z],
+        this.nodes[(int)position.x - 1][(int)position.y + 1][(int)position.z + 1]);
+    }
+
+    if (!ignoreUp && !ignoreBack) {
+      lookNode(this.nodes[(int)position.x][(int)position.y][(int)position.z],
+        this.nodes[(int)position.x][(int)position.y + 1][(int)position.z - 1]);
+    }
+
+    if (!ignoreUp) {
+      lookNode(this.nodes[(int)position.x][(int)position.y][(int)position.z],
+        this.nodes[(int)position.x][(int)position.y + 1][(int)position.z]);
+    }
+
+    if (!ignoreUp && !ignoreFront) {
+      lookNode(this.nodes[(int)position.x][(int)position.y][(int)position.z],
+        this.nodes[(int)position.x][(int)position.y + 1][(int)position.z + 1]);
+    }
+
+    if (!ignoreRight && !ignoreUp && !ignoreBack) {
+      lookNode(this.nodes[(int)position.x][(int)position.y][(int)position.z],
+        this.nodes[(int)position.x + 1][(int)position.y + 1][(int)position.z - 1]);
+    }
+
+    if (!ignoreRight && !ignoreUp) {
+      lookNode(this.nodes[(int)position.x][(int)position.y][(int)position.z],
+        this.nodes[(int)position.x + 1][(int)position.y + 1][(int)position.z]);
+    }
+
+    if (!ignoreRight && !ignoreUp && !ignoreFront) {
+      lookNode(this.nodes[(int)position.x][(int)position.y][(int)position.z],
+        this.nodes[(int)position.x + 1][(int)position.y + 1][(int)position.z + 1]);
+    }
   }
   
   private void lookNode(GridNode3d parentNode, GridNode3d currentNode) {
