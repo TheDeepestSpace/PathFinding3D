@@ -5,7 +5,7 @@ public class OrbitCamera : MonoBehaviour {
 
     public Transform _target;
 
-    public float _distance = 20.0f;
+    public float _distance = 20.0f; 
 
     public float _zoomStep = 1.0f;
 
