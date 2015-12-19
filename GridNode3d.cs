@@ -68,7 +68,7 @@ public class GridNode3d {
   
   /** DISPOSING / RESETTING */
   
-  void reset() {
+  public void reset() {
     this.F = this.G = this.H = 0;
     this.parent = null;
   }
