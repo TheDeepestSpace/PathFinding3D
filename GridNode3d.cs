@@ -1,11 +1,11 @@
 public class GridNode3d {
   public Vector3 gridCoordinates;
   
-  string gridName; // name of the grid to which this node will be linked to
+  string gridName;
   public Type type;
   
   public GridNode3d parent;
-  public int F, G, H; // those stand for F-cost, G-cost, and Heuistic cost
+  public int F, G, H;
   
   public enum Type {
     BLANK,
