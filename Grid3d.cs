@@ -107,14 +107,32 @@ public class Grid3d {
         currentNode.calculateValues(parentNode, this.getEndNode());
         this.openedList.Add(current);
       } else {
-        
+        compateParentWithOpen(parentNode, current); // !
       }
     }
   }
   
   private void compateParentWithOpen(GridNode3d parentNode, GridNode3d openNode) {
     double tempG = openNode.G;
-    double xDistance = 
+    double xDistance = Mathf.Abs(openNode.gridCoordinates.x - parent.gridCoordinates.x) / tileSize;
+    double yDistance = Mathf.Abs(openNode.gridCoordinates.y - parent.gridCoordinates.y) / tileSize;
+    double zDistance = Mathf.Abs(openNode.gridCoordinates.z - parent.gridCoordinates.z) / tileSize;
+    
+    if (xDistance == 1 && yDistance == 1 && zDistance == 1) {
+      tempG += 17;
+    }else if ((xDistance == 1 && yDistance == 1)
+            ||(xDistance == 1 && zDistance == 1)
+            ||(yDistance == 1 && zDistance == 1)) {
+      tempG += 14;        
+    }else {
+      tempG += 10;
+    }
+    
+    if (tempG < parentNode.G) {
+      open.calculateValues(parentNode, this.getEndNode());
+      this.openedList[this.openedList.IndexOf(open)] = open;
+    }
+    
   }
   
   /** GETTERS / SETTERS */
