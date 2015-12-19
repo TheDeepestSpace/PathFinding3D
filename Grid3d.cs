@@ -344,7 +344,6 @@ public class Grid3d {
       }
       this.nodes[(int)position.x][(int)position.y][(int)position.z].type = type;
     }
-    this.nodes[(int)position.x][(int)position.y][(int)position.z].setUpModel();
   }
   
   /** GETTERS / SETTERS */
