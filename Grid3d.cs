@@ -271,9 +271,9 @@ public class Grid3d {
         !(this.closedList.Contains(currentNode))) {
       if (!(this.openedList.Contains(currentNode))) {
         currentNode.calculateValues(parentNode, this.getEndNode());
-        this.openedList.Add(current);
+        this.openedList.Add(currentNode);
       } else {
-        compateParentWithOpen(parentNode, current); // !
+        compateParentWithOpen(parentNode, currentNode); // !
       }
     }
   }
@@ -295,8 +295,8 @@ public class Grid3d {
     }
     
     if (tempG < parentNode.G) {
-      open.calculateValues(parentNode, this.getEndNode());
-      this.openedList[this.openedList.IndexOf(open)] = open;
+      openNode.calculateValues(parentNode, this.getEndNode());
+      this.openedList[this.openedList.IndexOf(openNode)] = openNode;
     }
     
   }
