@@ -59,7 +59,7 @@ public class GridNode3d {
         this.G = this.parent.G + 14;  
       } else {
         this.G = this.parent.G + 10;
-      }
+      } 
     }
     
     this.H = xDistance + yDistance + zDistance;
