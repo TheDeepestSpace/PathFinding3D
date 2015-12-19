@@ -89,8 +89,8 @@ public class Grid3d {
       
       this.setOpenList(this.start);
       
-      this.closedList.Add(this.openList[0]);
-      this.openedList.Remove(this.openList[0]);
+      this.closedList.Add(this.openedList[0]);
+      this.openedList.Remove(this.openedList[0]);
       
       while (this.closedList[this.closedList.Count - 1] != this.getEndNode()) {
         if (this.openedList.Count != 0) {
