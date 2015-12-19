@@ -1,5 +1,5 @@
 public class Grid3d {
-  public static List<Grid3d> list; // or ArrayList
+  public static List<Grid3d> list;
   
   public static const int tileSize = 1;
   
@@ -275,7 +275,7 @@ public class Grid3d {
         currentNode.calculateValues(parentNode, this.getEndNode());
         this.openedList.Add(currentNode);
       } else {
-        compateParentWithOpen(parentNode, currentNode); // !
+        compateParentWithOpen(parentNode, currentNode);
       }
     }
   }
