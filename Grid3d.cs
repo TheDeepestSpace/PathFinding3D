@@ -66,7 +66,76 @@ public class Grid3d {
   
   /** PATHFINDING */
   
+  static Vecor3 openListPosition = new Vector3();
+  
+  public int findPath() {
+    this.openedList.Clear();
+    this.closedList.Clear();
+    this.finalPath.Clear();
+    
+    this.resetNodes();
+    
+    if (this.start.x == -1 || this.start.y == -1 || this.start.z == -1
+      ||this.end.x == -1 || this.end.y == -1 || this.end.z == -1) {
+      return pathNotFound;
+    } else if (this.start.x == this.end.x
+            &&this.start.y == this.end.y
+            &&this.start.z == this.end.z) {
+      return pathFound;        
+    } else {
+      this.openedList.Add(
+        this.nodes[(int) start.x][(int) start.y][(int) start.z]  
+      );
+      
+      this.setOpenList(this.start);
+    }
+  }
+  
+  private void setOpenList(Vector3 gridCoordinates) {
+    bool ignoreLeft = (gridCoordinates.x - 1) < 0;
+    bool ignoreRight = (gridCoordinates.x + 1) >= this.nodes.Count;
+    bool ignoreDown = (gridCoordinates.y - 1) < 0;
+    bool ignoreUp = (gridCoordinates.y + 1) >= this.nodes[0].Count;
+    bool ignoreBack = (gridCoordinates.z - 1) < 0;
+    bool ignoreFront = (gridCoordinates.z + 1) >= this.nodes[0][0].Count;
+  }
+  
+  private void lookNode(GridNode3d parentNode, GridNode3d currentNode) {
+    if (currentNode != GridNode3d.Type.BLOCK &&
+        !(this.closedList.Contains(currentNode))) {
+      if (!(this.openedList.Contains(currentNode))) {
+        currentNode.calculateValues(parentNode, this.getEndNode());
+        this.openedList.Add(current);
+      } else {
+        
+      }
+    }
+  }
+  
+  private void compateParentWithOpen(GridNode3d parentNode, GridNode3d openNode) {
+    double tempG = openNode.G;
+    double xDistance = 
+  }
+  
   /** GETTERS / SETTERS */
   
+  public GridNode3d getStartNode() {
+    return this.nodes[(int) start.x][(int) start.y][(int) start.z];
+  }
+  
+  public GridNode3d getEndNode() {
+    return this.nodes[(int) end.x][(int) end.y][(int) end.z];
+  }
+  
   /** DISPOSING / RESETTING */
+  
+  private void resetNodes() {
+    for (int x = 0; x < this.size.x; x++) {
+      for (int y = 0; y < this.size.y; y++) {
+        for (int z = 0; z < this.size.z; z++) {
+          this.nodes[x][y][z].reset();
+        }
+      }
+    }
+  }
 }
