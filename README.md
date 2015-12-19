@@ -1,5 +1,5 @@
 # PathFinding 3D
-Here you can find my representation of A* pathfinding algorithm for 3-dimentional grid.
+Here you can find representation of A* pathfinding algorithm for 3-dimentional grid.
 Written on C#
 
 # How to use
