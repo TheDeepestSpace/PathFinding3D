@@ -129,11 +129,11 @@ public class Grid3d {
   
   private void setOpenList(Vector3 gridCoordinates) {
     bool ignoreLeft = (gridCoordinates.x - 1) < 0;
-    bool ignoreRight = (gridCoordinates.x + 1) >= this.nodes.Count;
+    bool ignoreRight = (gridCoordinates.x + 1) >= this.size.x;
     bool ignoreDown = (gridCoordinates.y - 1) < 0;
-    bool ignoreUp = (gridCoordinates.y + 1) >= this.nodes[0].Count;
+    bool ignoreUp = (gridCoordinates.y + 1) >= this.size.y;
     bool ignoreBack = (gridCoordinates.z - 1) < 0;
-    bool ignoreFront = (gridCoordinates.z + 1) >= this.nodes[0][0].Count;
+    bool ignoreFront = (gridCoordinates.z + 1) >= this.size.z;
     
     if (!ignoreLeft && !ignoreDown && !ignoreBack) {
       lookNode(this.nodes[(int)gridCoordinates.x][(int)gridCoordinates.y][(int)gridCoordinates.z],
@@ -302,13 +302,13 @@ public class Grid3d {
   }
   
   public void setGridNode(Vector3 position, GridNode.Type type) {
-    if (position.x >= 0 && position.x < this.nodes.Count) {
-      if (position.y >= 0 && position.y < this.nodes[(int)position.x].Count) {
-        if (position.z >= 0 && position.z < this.nodes[(int)position.x][(int)position.y].Count) {
+    if (position.x >= 0 && position.x < this.size.x) {
+      if (position.y >= 0 && position.y < this.size.y) {
+        if (position.z >= 0 && position.z < this.size.z) {
           if (type == GridNode.Type.START || type == GridNode.Type.END) {
-            for (int x = 0; x < this.nodes.Count; x++) {
-              for (int y = 0; y < this.nodes[x].Count; y++) {
-                for (int z = 0; z < this.nodes[x][y].Count; z++) {
+            for (int x = 0; x < this.size.x; x++) {
+              for (int y = 0; y < this.size.y; y++) {
+                for (int z = 0; z < this.size.z; z++) {
                   if (this.nodes[x][y][z].type == type) {
                     if (type == GridNode.Type.START) {
                       this.start.x = -1;
