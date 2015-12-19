@@ -267,7 +267,7 @@ public class Grid3d {
   }
   
   private void lookNode(GridNode3d parentNode, GridNode3d currentNode) {
-    if (currentNode != GridNode3d.Type.BLOCK &&
+    if (currentNode.type != GridNode3d.Type.BLOCK &&
         !(this.closedList.Contains(currentNode))) {
       if (!(this.openedList.Contains(currentNode))) {
         currentNode.calculateValues(parentNode, this.getEndNode());
@@ -280,9 +280,9 @@ public class Grid3d {
   
   private void compateParentWithOpen(GridNode3d parentNode, GridNode3d openNode) {
     double tempG = openNode.G;
-    double xDistance = Mathf.Abs(openNode.gridCoordinates.x - parent.gridCoordinates.x) / tileSize;
-    double yDistance = Mathf.Abs(openNode.gridCoordinates.y - parent.gridCoordinates.y) / tileSize;
-    double zDistance = Mathf.Abs(openNode.gridCoordinates.z - parent.gridCoordinates.z) / tileSize;
+    double xDistance = Mathf.Abs(openNode.gridCoordinates.x - parentNode.gridCoordinates.x) / tileSize;
+    double yDistance = Mathf.Abs(openNode.gridCoordinates.y - parentNode.gridCoordinates.y) / tileSize;
+    double zDistance = Mathf.Abs(openNode.gridCoordinates.z - parentNode.gridCoordinates.z) / tileSize;
     
     if (xDistance == 1 && yDistance == 1 && zDistance == 1) {
       tempG += 17;
