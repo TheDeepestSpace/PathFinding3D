@@ -66,7 +66,7 @@ public class Grid3d {
   
   /** PATHFINDING */
   
-  static Vecor3 openListPosition = new Vector3();
+  static Vector3 openListPosition = new Vector3();
   
   public int findPath() {
     this.openedList.Clear();
