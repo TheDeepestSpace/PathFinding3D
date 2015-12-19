@@ -5,9 +5,9 @@ public class GridNode3d {
   public Type type;
   
   public GridNode3d parent;
-  public F, G, H; // those stand for F-cost, G-cost, and Heuistic cost
+  public int F, G, H; // those stand for F-cost, G-cost, and Heuistic cost
   
-  public static enum Type {
+  public enum Type {
     BLANK,
     START,
     END,
@@ -33,7 +33,7 @@ public class GridNode3d {
   }
   
   void setUp(string gridName, Vector3 gridCoordinates) {
-    this.grid = grid;
+    this.gridName = gridName;
     this.gridCoordinates.x = gridCoordinates.x;
     this.gridCoordinates.y = gridCoordinates.y;
     this.gridCoordinates.z = gridCoordinates.z;
@@ -44,16 +44,16 @@ public class GridNode3d {
   public void calculateValues(GridNode parentNode, GridNode endNode) {
     this.parent = parentNode;
     
-    double xDistance = Mathf.abs(this.gridCoordinates.x - this.parent.gridCoordinates.x);
-    double yDistance = Mathf.abs(this.gridCoordinates.y - this.parent.gridCoordinates.y);
-    double zDistance = Mathf.abs(this.gridCoordinates.z - this.parent.gridCoordinates.z);
+    double xDistance = Mathf.Abs(this.gridCoordinates.x - this.parent.gridCoordinates.x);
+    double yDistance = Mathf.Abs(this.gridCoordinates.y - this.parent.gridCoordinates.y);
+    double zDistance = Mathf.Abs(this.gridCoordinates.z - this.parent.gridCoordinates.z);
     
     if (this.parent != null) {
-      if (xDistance != 0 && yDistance != 0 && zDistance) {
-        this.G = thia.parent.G + 17;
+      if (xDistance != 0 && yDistance != 0 && zDistance != 0) {
+        this.G = this.parent.G + 17;
       } else if (
           (xDistance != 0 && yDistance != 0) ||
-          (xDispance != 0 && zDistance != 0) ||
+          (xDistance != 0 && zDistance != 0) ||
           (yDistance != 0 && zDistance != 0)
         ) {
         this.G = this.parent.G + 14;  
@@ -62,7 +62,7 @@ public class GridNode3d {
       } 
     }
     
-    this.H = xDistance + yDistance + zDistance;
+    this.H = (int)xDistance + (int)yDistance + (int)zDistance;
     this.F = this.G = this.H;
   }
   
