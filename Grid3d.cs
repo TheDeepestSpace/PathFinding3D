@@ -88,7 +88,43 @@ public class Grid3d {
       );
       
       this.setOpenList(this.start);
+      
+      this.closedList.Add(this.openList[0]);
+      this.openedList.Remove(this.openList[0]);
+      
+      while (this.closedList[this.closedList.Count - 1] != this.getEndNode()) {
+        if (this.openedList.Count != 0) {
+          int bestFIndex = this.getBestFIndex();
+          if (bestFIndex != -1) {
+            this.closedList.Add(this.openedList[bestFIndex]);
+            this.openedList.Remove(this.openedList[bestFIndex]);
+            
+            openListPostion.x = this.closedList[this.closedList.Count - 1].gridCoordinates.x;
+            openListPostion.y = this.closedList[this.closedList.Count - 1].gridCoordinates.y;
+            openListPostion.z = this.closedList[this.closedList.Count - 1].gridCoordinates.z;
+            
+            this.setOpenList(openListPosition);
+          }else {
+            return pathNotFound;
+          }
+        }else {
+          return pathNotFound;
+        }
+      }
     }
+    
+    GridNode3d g = this.closeList[this.closeList.Count - 1];
+    this.finalPath.Add(g);
+
+
+    while (g != this.getStartNode()) {
+      g = g.parent;
+      this.finalPath.Add(g);
+    }
+
+    this.finalPath.Reverse();
+
+    return pathFound;
   }
   
   private void setOpenList(Vector3 gridCoordinates) {
@@ -273,6 +309,20 @@ public class Grid3d {
   
   public GridNode3d getEndNode() {
     return this.nodes[(int) end.x][(int) end.y][(int) end.z];
+  }
+  
+  private int getBestFIndex () {
+    double bestF = float.MaxValue;
+    int index = -1;
+    
+    for (int i = 0; i < this.openedList.Count; i++) {
+      if (bestF > this.openedList[i].F) {
+        bestF = this.openedList[i].F;
+        index = i;
+      }
+    }
+    
+    return index;
   }
   
   /** DISPOSING / RESETTING */
