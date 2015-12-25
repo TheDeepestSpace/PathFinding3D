@@ -275,12 +275,12 @@ public class Grid3d {
         currentNode.calculateValues(parentNode, this.getEndNode());
         this.openedList.Add(currentNode);
       } else {
-        compateParentWithOpen(parentNode, currentNode);
+        compareParentWithOpen(parentNode, currentNode);
       }
     }
   }
   
-  private void compateParentWithOpen(GridNode3d parentNode, GridNode3d openNode) {
+  private void compareParentWithOpen(GridNode3d parentNode, GridNode3d openNode) {
     double tempG = openNode.G;
     double xDistance = Mathf.Abs(openNode.gridCoordinates.x - parentNode.gridCoordinates.x) / tileSize;
     double yDistance = Mathf.Abs(openNode.gridCoordinates.y - parentNode.gridCoordinates.y) / tileSize;
