@@ -32,7 +32,7 @@ public class Grid3d {
     this.end = new Vector3();
     
     this.name = "n/a";
-    this.size = new Vecor3(0, 0, 0);
+    this.size = new Vector3(0, 0, 0);
   }
   
   /** CREATING AND SETTING */
