@@ -48,6 +48,10 @@ public class GridNode3d {
     double yDistance = Mathf.Abs(this.gridCoordinates.y - this.parent.gridCoordinates.y);
     double zDistance = Mathf.Abs(this.gridCoordinates.z - this.parent.gridCoordinates.z);
     
+    double xEndDistance = Math.abs(this.gridCoordinates.x - endNode.gridCoordinates.x);
+    double yEndDistance = Math.abs(this.gridCoordinates.y - endNode.gridCoordinates.y);
+    double zEndDistance = Math.abs(this.gridCoordinates.z - endNode.gridCoordinates.z);
+    
     if (this.parent != null) {
       if (xDistance != 0 && yDistance != 0 && zDistance != 0) {
         this.G = this.parent.G + 17;
@@ -62,7 +66,7 @@ public class GridNode3d {
       } 
     }
     
-    this.H = (int)xDistance + (int)yDistance + (int)zDistance;
+    this.H = (int)xEndDistance + (int)yEndDistance + (int)zEndDistance;
     this.F = this.G = this.H;
   }
   
