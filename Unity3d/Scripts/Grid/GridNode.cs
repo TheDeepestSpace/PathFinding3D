@@ -74,8 +74,12 @@ public class GridNode {
                 this.G = this.parent.G + 10;
             }
         }
+        
+        double xEndDistance = Mathf.Abs(this.gridCoordinates.x - endNode.gridCoordinates.x);
+        double yEndDistance = Mathf.Abs(this.gridCoordinates.y - endNode.gridCoordinates.y);
+        double zEndDistance = Mathf.Abs(this.gridCoordinates.z - endNode.gridCoordinates.z);
 
-        this.H = (int)xDistance + (int)yDistance + (int)zDistance;
+        this.H = (int)xEndDistance + (int)yEndDistance + (int)zEndDistance;
         this.F = this.G = this.H;
     }
 
